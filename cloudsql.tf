@@ -12,23 +12,23 @@ resource "google_sql_database_instance" "instance" {
   region = "us-central1"
 
   #depends_on = [google_service_networking_connection.private_vpc_connection]
-  
+
   settings {
     disk_size = 10
     ip_configuration {
-      ipv4_enabled = false
+      ipv4_enabled    = false
       private_network = google_compute_network.vpc.self_link
     }
     tier = "db-f1-micro"
   }
 
-  deletion_protection  = "false"
+  deletion_protection = "false"
 }
 
 resource "google_sql_user" "users" {
-    name = "root"
-    instance = "${google_sql_database_instance.instance.name}"
-    host = "%"
-    password = "password"
+  name     = "root"
+  instance = google_sql_database_instance.instance.name
+  host     = "%"
+  password = "password"
 }
 

@@ -4,5 +4,5 @@ provider "google" {
 }
 
 provider "google-beta" {
-  region  = var.region
+  region = var.region
 }
