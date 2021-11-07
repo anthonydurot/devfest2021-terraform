@@ -2,8 +2,13 @@ resource "google_sql_database" "database" {
   name     = "devfest_database"
   instance = google_sql_database_instance.instance.name
 }
-resource "google_sql_database" "database_cicd" {
+resource "google_sql_database" "cicd" {
   name     = "devfest_database_cicd"
+  instance = google_sql_database_instance.instance.name
+}
+
+resource "google_sql_database" "secret_manager" {
+  name     = "devfest_database_secret_manager"
   instance = google_sql_database_instance.instance.name
 }
 
