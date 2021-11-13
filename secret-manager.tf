@@ -58,4 +58,3 @@ resource "google_secret_manager_secret_version" "database-password" {
 
   secret_data = google_sql_user.users.password
 }
-

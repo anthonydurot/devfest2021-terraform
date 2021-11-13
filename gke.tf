@@ -33,6 +33,10 @@ resource "google_container_cluster" "primary" {
     services_secondary_range_name = "pod-range"
   }
 
+  workload_identity_config {
+    workload_pool = "${var.project_id}.svc.id.goog"
+  }
+
 }
 
 # Separately Managed Node Pool
@@ -73,15 +77,9 @@ resource "google_container_node_pool" "primary_nodes" {
 # # https://learn.hashicorp.com/terraform/kubernetes/provision-gke-cluster#optional-configure-terraform-kubernetes-provider
 # # To learn how to schedule deployments and services using the provider, go here: https://learn.hashicorp.com/tutorials/terraform/kubernetes-provider.
 
-# provider "kubernetes" {
-#   load_config_file = "false"
+provider "kubernetes" {
+  config_path    = "~/.kube/config"
+  config_context = "gke_dark-gateway-330714_us-central1_dark-gateway-330714-gke"
 
-#   host     = google_container_cluster.primary.endpoint
-#   username = var.gke_username
-#   password = var.gke_password
-
-#   client_certificate     = google_container_cluster.primary.master_auth.0.client_certificate
-#   client_key             = google_container_cluster.primary.master_auth.0.client_key
-#   cluster_ca_certificate = google_container_cluster.primary.master_auth.0.cluster_ca_certificate
-# }
+}
 
