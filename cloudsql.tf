@@ -1,12 +1,12 @@
 resource "google_sql_database" "database" {
-  name     = "devfest_database"
+  name     = "base"
   instance = google_sql_database_instance.instance.name
   depends_on = [
     google_sql_database_instance.instance
   ]
 }
 resource "google_sql_database" "cicd" {
-  name     = "devfest_database_cicd"
+  name     = "cicd"
   instance = google_sql_database_instance.instance.name
   depends_on = [
     google_sql_database_instance.instance
@@ -14,7 +14,7 @@ resource "google_sql_database" "cicd" {
 }
 
 resource "google_sql_database" "secret_manager" {
-  name     = "devfest_database_secret_manager"
+  name     = "secret_manager"
   instance = google_sql_database_instance.instance.name
   depends_on = [
     google_sql_database_instance.instance
@@ -22,7 +22,7 @@ resource "google_sql_database" "secret_manager" {
 }
 
 resource "google_sql_database" "vault" {
-  name     = "devfest_database_vault"
+  name     = "vault"
   instance = google_sql_database_instance.instance.name
   depends_on = [
     google_sql_database_instance.instance
@@ -30,7 +30,7 @@ resource "google_sql_database" "vault" {
 }
 
 resource "google_sql_database" "iam" {
-  name     = "devfest_database_iam"
+  name     = "iam"
   instance = google_sql_database_instance.instance.name
   depends_on = [
     google_sql_database_instance.instance

@@ -13,3 +13,7 @@ variable gcp_sa_workload_id_secret_manager_accessor {
 variable gcp_sa_workload_id_sql_user {
   description = "Nom du Service Account GCP accessible via Workload Identity pour se connecter à Cloud SQL"
 }
+
+# variable gcp_sa_workload_id_secret_manager_accessor_external_secrets {
+#   description = "Non du "
+# }
